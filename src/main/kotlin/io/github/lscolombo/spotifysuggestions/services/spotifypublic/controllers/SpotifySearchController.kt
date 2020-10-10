@@ -1,6 +1,7 @@
 package io.github.lscolombo.spotifysuggestions.services.spotifypublic.controllers
 
 import io.github.lscolombo.spotifysuggestions.services.spotifypublic.responses.PlaylistResponse
+import io.github.lscolombo.spotifysuggestions.services.spotifypublic.responses.pojos.Track
 import io.github.lscolombo.spotifysuggestions.services.spotifypublic.services.SearchSpotifyConsumerService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -12,5 +13,10 @@ class SpotifySearchController(private val searchSpotifyConsumerService: SearchSp
     @GetMapping("playlists")
     fun getPlaylistsByKeyword(@RequestParam("keyword") keyword: String): ResponseEntity<List<PlaylistResponse>> {
         return ResponseEntity.ok(searchSpotifyConsumerService.searchPlaylist(keyword))
+    }
+
+    @GetMapping("tracks")
+    fun getTracksByKeyword(@RequestParam("keyword") keyword: String): ResponseEntity<List<Track>> {
+        return ResponseEntity.ok(searchSpotifyConsumerService.searchTrack(keyword))
     }
 }

@@ -10,6 +10,7 @@ import io.github.lscolombo.spotifysuggestions.services.spotifypublic.responses.p
 class PlaylistResponse(playlistSimplified: PlaylistSimplified) {
 
     val spotifyId: String = playlistSimplified.id
+    val spotifyUri: String = playlistSimplified.uri
     val name: String = playlistSimplified.name
     val image: String? = playlistSimplified.images?.get(0)?.url
     val owner: User = User(playlistSimplified.owner)
